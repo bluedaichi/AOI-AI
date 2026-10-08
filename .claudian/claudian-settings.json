@@ -25,16 +25,53 @@
       "enabled": true,
       "outputStyle": null,
       "promptSuggestions": false,
-      "discoveredOutputStyles": [],
+      "discoveredOutputStyles": [
+        "default",
+        "Proactive",
+        "Explanatory",
+        "Learning"
+      ],
       "cliPath": "",
       "cliPathsByHost": {},
       "loadUserSettings": true,
       "enableChrome": false,
-      "visibleModels": [],
+      "visibleModels": [
+        "opus[1m]",
+        "sonnet"
+      ],
       "modelAliases": {},
       "environmentVariables": "",
       "environmentHash": "",
-      "selectedModels": []
+      "selectedModels": [
+        {
+          "value": "opus[1m]",
+          "label": "Opus",
+          "description": "Opus 4.8 with 1M context · Best for everyday, complex tasks · $5/$25 per Mtok",
+          "resolvedModel": "claude-opus-4-8[1m]",
+          "reasoningMetadataResolved": true,
+          "supportedEffortLevels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ]
+        },
+        {
+          "value": "sonnet",
+          "label": "Sonnet",
+          "description": "Sonnet 5 · Efficient for routine tasks · $3/$15 per Mtok",
+          "resolvedModel": "claude-sonnet-5",
+          "reasoningMetadataResolved": true,
+          "supportedEffortLevels": [
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ]
+        }
+      ]
     },
     "codex": {
       "enabled": false,

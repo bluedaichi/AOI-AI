@@ -8,6 +8,12 @@ cd "$(dirname "$0")" || exit 1
 ok()   { printf '  ok  %s\n' "$1"; }
 fail() { printf '\n!! %s\n' "$1"; exit 1; }
 
+if [ -d _setup/claude ]; then
+  echo "== 0. 設定ファイルを更新 =="
+  mkdir -p .claude/hooks
+  cp -R _setup/claude/. .claude/ && rm -rf _setup && ok ".claude を最新にしました"
+fi
+
 echo "== 1. フォルダを作成 =="
 for f in 00_Inbox 10_Projects/note-shueki/drafts 20_Areas/移住検討 30_Resources 40_Daily 90_Archive _agent/Tasks _agent/Reports; do
   mkdir -p "$f" && touch "$f/.gitkeep" && ok "$f"

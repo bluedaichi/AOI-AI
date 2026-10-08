@@ -1,0 +1,46 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '/Users/daichiaoi/Documents/AOI-AI/.codex/hooks/guard.sh'"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '/Users/daichiaoi/Documents/AOI-AI/.codex/hooks/check-frontmatter.sh'"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '/Users/daichiaoi/Documents/AOI-AI/.codex/hooks/session-start.sh'"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "git add -A >/dev/null 2>&1 && (git diff --cached --quiet || git commit -q -m \"auto: $(date +%Y-%m-%d_%H%M)\") >/dev/null 2>&1; exit 0"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # 自宅Vault ハーネスの初期設定（Mac）
-# 使い方：ターミナルで  cd ~/Documents/home-vault && bash setup.sh
-# 事前に GitHub で「home-vault（Private）」と合言葉（トークン）を作っておくこと
+# 使い方：ターミナルで  cd ~/Documents/AOI-AI && bash setup.sh
+# 事前に GitHub で「AOI-AI（Private）」と合言葉（トークン）を作っておくこと
 set -u
 cd "$(dirname "$0")" || exit 1
 
@@ -31,8 +31,8 @@ command -v git >/dev/null 2>&1 || fail "git がありません。ターミナル
 if [ ! -d .git ]; then
   git init -q -b main || fail "git の準備に失敗しました。"
 fi
-git config user.name  >/dev/null || git config user.name  "home-vault"
-git config user.email >/dev/null || git config user.email "home-vault@localhost"
+git config user.name  >/dev/null || git config user.name  "AOI-AI"
+git config user.email >/dev/null || git config user.email "AOI-AI@localhost"
 git add -A
 git diff --cached --quiet || git commit -q -m "init: harness"
 ok "準備完了"
@@ -55,18 +55,18 @@ else
   git remote remove origin >/dev/null 2>&1
   if [ -x "$(git --exec-path)/git-credential-osxkeychain" ]; then
     # 合言葉は Mac のキーチェーンに保存する
-    git remote add origin "https://$GH_USER@$HOST/$GH_USER/home-vault.git"
+    git remote add origin "https://$GH_USER@$HOST/$GH_USER/AOI-AI.git"
     git config credential.helper osxkeychain
     printf 'protocol=https\nhost=%s\nusername=%s\npassword=%s\n\n' "$HOST" "$GH_USER" "$GH_TOKEN" | git credential approve
   else
-    git remote add origin "https://$GH_USER:$GH_TOKEN@$HOST/$GH_USER/home-vault.git"
+    git remote add origin "https://$GH_USER:$GH_TOKEN@$HOST/$GH_USER/AOI-AI.git"
   fi
 
   if ! GIT_TERMINAL_PROMPT=0 git ls-remote origin >/dev/null 2>&1; then
     fail "GitHub につながりませんでした。次を確認して、もう一度 bash setup.sh を実行してください。
    1) ユーザー名が正しいか（github.com の右上アイコンで確認できます）
-   2) GitHub に「home-vault」という名前の保管場所を作ったか
-   3) 合言葉の設定で home-vault を選び、Contents を Read and write にしたか"
+   2) GitHub に「AOI-AI」という名前の保管場所を作ったか
+   3) 合言葉の設定で AOI-AI を選び、Contents を Read and write にしたか"
   fi
   ok "接続できました"
 fi
@@ -77,6 +77,6 @@ ok "送信完了"
 
 cat <<'EOS'
 
-完了しました。次は Obsidian で「書類」の home-vault を保管庫として開いてください。
+完了しました。次は Obsidian で「書類」の AOI-AI を保管庫として開いてください。
 （codex や gh が入っていなくても問題ありません）
 EOS

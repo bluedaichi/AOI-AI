@@ -19,29 +19,29 @@ Android の Claude アプリ ──Dispatch──→ Mac の Claude デスクト
 3. GitHub のアカウント：github.com で「Continue with Google」から作成
 
 ## 2. GitHub の準備と配置（ターミナルのコマンドは1回だけ）
-1. github.com 右上の「＋」→「New repository」→ 名前 `home-vault`、「Private」を選んで「Create repository」
+1. github.com 右上の「＋」→「New repository」→ 名前 `AOI-AI`、「Private」を選んで「Create repository」
 2. 合言葉（トークン）を作る：右上アイコン → Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token
-   - Repository access：Only select repositories → home-vault
+   - Repository access：Only select repositories → AOI-AI
    - Permissions：Contents を Read and write
    - 表示された `github_pat_…` をコピーしておく
-3. zip を展開し、`home-vault` フォルダを「書類」に置く
-4. ターミナルで `cd ~/Documents/home-vault && bash setup.sh`
+3. zip を展開し、`AOI-AI` フォルダを「書類」に置く
+4. ターミナルで `cd ~/Documents/AOI-AI && bash setup.sh`
    - ユーザー名と合言葉を聞かれるので入力（合言葉は Mac のキーチェーンに保存されます）
    - 「完了しました」と出れば成功
-5. Obsidian で「フォルダを保管庫として開く」→ home-vault
+5. Obsidian で「フォルダを保管庫として開く」→ AOI-AI
 6. 設定 → コミュニティプラグイン → 有効化 → 「Git」を入れて有効化
    - Auto commit-and-sync interval：10（分）
    - Pull on startup：ON
 
 ## 3. Android との同期（無料・GitHub 経由）
 1. github.com → 右上アイコン → Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token
-   - Repository access：Only select repositories → home-vault
+   - Repository access：Only select repositories → AOI-AI
    - Permissions：Contents を Read and write
    - 有効期限：1年。表示されたトークンはパスワード管理アプリなどに保存
-2. Android に Obsidian を入れ、空の保管庫「home-vault」を作る
+2. Android に Obsidian を入れ、空の保管庫「AOI-AI」を作る
 3. 設定 → コミュニティプラグイン → 制限モードをオフ → 「Git」を入れて有効化
 4. コマンドパレット → 「Git: Clone an existing remote repo」
-   - URL：`https://github.com/<ユーザー名>/home-vault.git`
+   - URL：`https://github.com/<ユーザー名>/AOI-AI.git`
    - ユーザー名：GitHub のユーザー名 / パスワード：手順1のトークン
    - 保管庫のルートに clone する
 5. 自動同期を 10 分、起動時の取り込みを ON にする
@@ -51,8 +51,8 @@ Android の Claude アプリ ──Dispatch──→ Mac の Claude デスクト
 ## 4. スマホから AI を使う（3通り）
 | 状況 | 方法 | 何ができるか |
 |---|---|---|
-| Mac が起動中 | Android の Claude アプリ → Dispatch に「home-vault フォルダで Claude Code セッションを開いて、Inbox整理して」と送る | Mac のデスクトップ版が Vault を直接操作。終わると通知が届く |
-| Mac が停止中 | Claude アプリの Code タブで GitHub の home-vault を選んで依頼 | 作業用ブランチと PR が届く。帰宅後に Mac でマージ |
+| Mac が起動中 | Android の Claude アプリ → Dispatch に「AOI-AI フォルダで Claude Code セッションを開いて、Inbox整理して」と送る | Mac のデスクトップ版が Vault を直接操作。終わると通知が届く |
+| Mac が停止中 | Claude アプリの Code タブで GitHub の AOI-AI を選んで依頼 | 作業用ブランチと PR が届く。帰宅後に Mac でマージ |
 | メモだけ | Obsidian で 00_Inbox/ に書いて同期 | あとで「Inbox整理して」で片付く |
 
 Dispatch は Pro / Max プランで使えます。初回に Claude アプリと Mac のデスクトップ版をペアリングします。外出中は Mac を電源につなぎ、デスクトップ版の Settings → This computer → System で「Keep computer awake」を ON にします（蓋を閉じるとスリープします）。

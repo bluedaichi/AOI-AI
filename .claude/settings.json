@@ -1,0 +1,40 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(codex exec:*)"
+    ],
+    "deny": [
+      "Edit(.obsidian/**)",
+      "Write(.obsidian/**)",
+      "Bash(rm:*)",
+      "Bash(git push --force:*)",
+      "Bash(git push -f:*)",
+      "Bash(git reset --hard:*)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '--- _agent/progress.md ---'; cat _agent/progress.md 2>/dev/null; exit 0"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "git add -A >/dev/null 2>&1 && (git diff --cached --quiet || git commit -q -m \"auto: $(date +%Y-%m-%d_%H%M)\") >/dev/null 2>&1; exit 0"
+          }
+        ]
+      }
+    ]
+  }
+}

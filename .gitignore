@@ -1,0 +1,10 @@
+# Obsidian の端末ごとの状態
+.obsidian/workspace*.json
+.obsidian/cache
+.trash/
+
+# Claude Code の個人設定
+.claude/settings.local.json
+
+# OS
+.DS_Store

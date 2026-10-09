@@ -13,7 +13,7 @@ new=$(cat "$f")
 pick() { # $1=種類 $2=本文
   case "$1" in
     url)  printf '%s\n' "$2" | grep -oE 'https?://[^ )>]+' ;;
-    link) printf '%s\n' "$2" | grep -oE '\[\[[^]]+\]\]' ;;
+    link) printf '%s\n' "$2" | grep -oE '\[\[[^]]+\]\]' | sed -E 's/\\?\|[^]]*\]\]$/]]/' ;;  # 別名 [[名前|表示]] は名前だけで比べる
     num)  printf '%s\n' "$2" | grep -oE '[0-9][0-9,.]*' | sed -E 's/[,.]$//' ;;
   esac | sort -u
 }

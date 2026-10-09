@@ -86,6 +86,15 @@ status: 進行中 | 完了 | 下書き | 参考
 5. `updated:` を今日の日付にする。
 6. 変えた点を2〜3行で本人に伝える（例：「6列の表を、会社ごとのカードに分けました」）。
 
+## 書式に合わないノートを探す
+```
+bash .agents/skills/md-beautify/lint.sh            # 対象フォルダ全体
+bash .agents/skills/md-beautify/lint.sh <パス>     # 1つだけ
+```
+- 対象：10_Projects・20_Areas・30_Resources（30_Resources/me と 10_Projects/*/drafts は除く）
+- frontmatter に `beautify: false` があるノートは対象外
+- 自動化：保存のたびに `.claude/hooks/check-format.sh` がこれを実行し、合わなければ整えるよう促す。定期実行「vault-auto-beautify」（毎日 9・12・15・18・21時）が残りを整える
+
 ## 新しいノートを書くとき
 最初からこの書式で書く。チェック（手順4）は不要。
 
